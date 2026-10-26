@@ -233,7 +233,7 @@ namespace VaMMcpBridge
                             first = false;
                             sb.Append("{\"name\":\"" + mf.gameObject.name.Replace("\"", "'") + "\",\"type\":\"MeshFilter\",\"verts\":" + mf.sharedMesh.vertexCount.ToString() + "}");
                         }
-                        foreach (var smr in UnityEngine.Object.FindObjectsOfType<SkinnedMeshRenderer>())
+                        foreach (var smr in Resources.FindObjectsOfTypeAll<SkinnedMeshRenderer>())
                         {
                             if (smr.sharedMesh == null) continue;
                             if (!first) sb.Append(",");
@@ -260,7 +260,7 @@ namespace VaMMcpBridge
                             WriteObj(mesh, outPath);
                             count++;
                         }
-                        var allSkinned = UnityEngine.Object.FindObjectsOfType<SkinnedMeshRenderer>();
+                        var allSkinned = Resources.FindObjectsOfTypeAll<SkinnedMeshRenderer>();
                         foreach (var smr in allSkinned)
                         {
                             var mesh = smr.sharedMesh;
